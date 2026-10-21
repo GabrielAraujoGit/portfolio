@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gabriel Araujo | Desenvolvedor</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0d1117;--card:#161b22;--border:#262c36;--text:#9aa4b2;--strong:#f0f3f6;--accent:#00ff1e;--orange:#f26b00}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+input,select{font-family:inherit;font-size:14px;background:#0d1117;color:var(--strong);border:1px solid var(--border);border-radius:8px;padding:8px 12px;outline:none;width:100%}
+input:focus,select:focus,button:focus-visible{border-color:var(--accent);outline:1px solid var(--accent)}
+.wrap{max-width:1000px;margin:0 auto;padding:0 24px}
+nav{position:sticky;top:0;background:rgba(13,17,23,.85);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);z-index:5}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;height:60px}
+nav b{color:var(--strong);font-weight:600}nav b span{color:var(--accent)}
+nav ul{display:flex;gap:22px;list-style:none;font-size:14px}
+nav ul a:hover{color:var(--accent)}
+.hero{padding:90px 0 60px}
+.hero small{color:var(--accent);font-family:monospace;font-size:14px}
+.hero h1{font-size:clamp(32px,6vw,52px);color:var(--strong);font-weight:600;line-height:1.15;margin:10px 0 16px}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p{max-width:560px;font-size:16px}
+.btns{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+.btn{padding:10px 22px;border-radius:8px;font-size:14px;font-weight:500;border:1px solid var(--accent);color:var(--accent);transition:.2s;display:inline-block}
+.btn:hover,.btn.fill{background:var(--accent);color:#000}
+.btn.sm{padding:6px 14px;font-size:13px}
+h2{color:var(--strong);font-size:26px;font-weight:600;margin-bottom:8px}
+h2::before{content:"> ";color:var(--accent)}
+.sub{margin-bottom:30px;font-size:14px}
+section{padding:50px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px;display:flex;flex-direction:column;gap:12px;transition:.2s}
+.card:hover{transform:translateY(-4px);border-color:var(--accent)}
+.card h3{color:var(--strong);font-size:17px;font-weight:600;display:flex;justify-content:space-between;gap:8px}
+.card h3 span{font-size:12px;color:var(--text);font-weight:400;white-space:nowrap;display:inline-flex;align-items:center;gap:6px}
+.card p{font-size:14px;flex:1}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags i{font-style:normal;font-size:11px;padding:3px 10px;display:inline-flex;align-items:center;gap:6px;border-radius:20px;background:rgba(0,255,30,.08);color:var(--accent);border:1px solid rgba(0,255,30,.2)}
+.acts{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.acts a{font-size:13px;color:var(--accent);display:inline-flex;align-items:center;gap:6px}
+.ti{width:16px;height:16px;padding:2px;border-radius:4px;background:#e8ecf1;object-fit:contain;flex-shrink:0}
+.te{font-size:12px;line-height:1}
+.li{width:14px;height:14px;vertical-align:-2px;margin-right:6px}
+.web h5 .li{width:22px;height:22px;vertical-align:-3px}
+.card.copel{border-color:rgba(242,107,0,.5)}
+.card.copel .tags i{background:rgba(242,107,0,.1);color:var(--orange);border-color:rgba(242,107,0,.3)}
+.card.copel .btn{border-color:var(--orange);color:var(--orange)}
+.card.copel .btn:hover{background:var(--orange);color:#fff}
+.sg{margin-bottom:26px}
+.sg h4{color:var(--strong);font-size:14px;font-weight:500;margin-bottom:12px}
+.skills{display:flex;flex-wrap:wrap;gap:10px}
+.sk{display:flex;align-items:center;gap:10px;padding:8px 16px 8px 8px;border-radius:10px;background:var(--card);border:1px solid var(--border);font-size:14px;color:var(--strong)}
+.ic{position:relative;width:32px;height:32px;border-radius:8px;background:#e8ecf1;display:grid;place-items:center;font-size:17px;color:#222;font-weight:600}
+.ic img{width:20px;height:20px}
+footer{border-top:1px solid var(--border);padding:30px 0;text-align:center;font-size:13px}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;z-index:20;padding:16px}
+.modal.open{display:flex}
+/* simulações */
+.sw{background:var(--card);border:1px solid var(--border);border-radius:14px;width:100%;max-width:680px;max-height:90vh;overflow:auto}
+.sh{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid var(--border);color:var(--strong);font-weight:500;position:sticky;top:0;background:var(--card)}
+.sb{padding:20px;display:flex;flex-direction:column;gap:12px;font-size:14px}
+.note{font-size:11px;opacity:.7}
+.lo{background:#0a0e14;border:1px solid var(--border);border-radius:8px;height:180px;overflow:auto;padding:10px;font-family:monospace;font-size:13px}
+.ok{color:var(--accent)}.er{color:#ff5c5c}
+.r2{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.chip{padding:3px 10px;border:1px solid var(--border);border-radius:20px;font-size:12px;color:var(--strong)}
+.pre{background:#0a0e14;border:1px solid var(--border);border-radius:8px;padding:12px;font-family:monospace;font-size:13px;white-space:pre-wrap;min-height:90px}
+canvas{width:100%;border-radius:8px;border:1px solid var(--border);touch-action:none;cursor:crosshair;background:#0a0e14}
+.code{font-family:monospace;font-size:40px;letter-spacing:8px;color:var(--accent);text-align:center}
+.bar{height:4px;background:var(--border);border-radius:4px}.bar i{display:block;height:100%;background:var(--accent);transition:width .5s linear}
+table{width:100%;border-collapse:collapse}td,th{padding:7px 4px;border-bottom:1px solid var(--border);text-align:left;font-weight:400}
+.st{padding:4px 12px;border:1px solid var(--border);border-radius:20px;font-size:12px}.st.on{background:var(--accent);color:#000;border-color:var(--accent)}
+.web{border:1px solid var(--border);border-radius:8px;overflow:hidden}.web div:first-child{background:#0a0e14;padding:8px 12px;font-size:12px}
+.web div+div{padding:24px;text-align:center;display:flex;flex-direction:column;gap:10px;align-items:center}
+.web h5{font-size:24px;color:var(--strong)}
+/* ChatCopel */
+.chat{--c-bg:#fff;--c-side:#f3f3f3;--c-text:#666;--c-strong:#222;--c-border:#e6e6e6;--c-card:#fff;width:100%;max-width:760px;height:min(640px,90vh);background:var(--c-bg);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;position:relative;color:var(--c-text)}
+.chat.dark{--c-bg:#1b1b1d;--c-side:#252528;--c-text:#bbb;--c-strong:#f1f1f1;--c-border:#3a3a3e;--c-card:#2a2a2d}
+.chat .top{height:70px;display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0}
+.chat .logo b{display:block;color:var(--orange);font-size:22px;font-weight:600;line-height:1}
+.chat .logo em{display:block;color:var(--orange);font-size:10px;text-align:right}
+.chat .x,.chat .th{position:absolute;top:22px;color:var(--orange);font-size:18px}
+.chat .x{right:20px}.chat .th{right:56px}
+.chat .body{flex:1;display:flex;flex-direction:column;align-items:center;padding:0 20px 20px;min-height:0}
+.chat .body.empty{justify-content:center;padding-bottom:60px}
+.welcome{text-align:center;margin-bottom:30px}
+.welcome h4{font-size:20px;font-weight:300}.welcome h4 strong{color:var(--orange);font-weight:600}
+.body:not(.empty) .welcome{display:none}
+.msgs{flex:1;width:100%;overflow-y:auto;display:none;flex-direction:column;gap:12px;padding:4px}
+.body:not(.empty) .msgs{display:flex}
+.m{max-width:78%;padding:10px 14px;font-size:14px;border-radius:16px}
+.m.u{align-self:flex-end;background:var(--orange);color:#fff;border-bottom-right-radius:4px}
+.m.b{align-self:flex-start;background:var(--c-side);color:var(--c-strong);border-bottom-left-radius:4px}
+.m .src{display:inline-block;margin-top:8px;padding:2px 10px;font-size:11px;border-radius:10px;background:rgba(242,107,0,.12);color:var(--orange)}
+.dots span{display:inline-block;width:6px;height:6px;margin:0 2px;background:#999;border-radius:50%;animation:bl 1.2s infinite}
+.dots span:nth-child(2){animation-delay:.2s}.dots span:nth-child(3){animation-delay:.4s}
+@keyframes bl{0%,60%,100%{opacity:.3}30%{opacity:1}}
+.comp{width:100%;max-width:560px;background:var(--c-card);border:1px solid var(--c-border);border-radius:22px;box-shadow:0 2px 6px rgba(0,0,0,.2);padding:14px 14px 10px}
+.comp textarea{width:100%;border:none;outline:none;resize:none;background:transparent;color:var(--c-strong);font:400 14px 'Poppins',sans-serif}
+.comp .row{display:flex;justify-content:flex-end;margin-top:6px;color:var(--orange)}
+.comp .row button:disabled{opacity:.35;cursor:not-allowed}
+.hint{font-size:11px;margin-top:10px;opacity:.7;text-align:center}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <b>gabriel<span>.dev</span></b>
+  <ul><li><a href="#sobre">Sobre</a></li><li><a href="#projetos">Projetos</a></li><li><a href="#stack">Stack</a></li><li><a href="#contato">Contato</a></li></ul>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <small>// olá, eu sou o Gabriel</small>
+  <h1>Desenvolvedor <em>Back End</em> construindo ferramentas para foco e fluxo.</h1>
+  <p id="sobre">Mais de 4 anos de experiência com Elixir/Phoenix, sistemas distribuídos, integrações bancárias e IA. Também crio projetos open source em Python, visão computacional e segurança.</p>
+  <div class="btns">
+    <a class="btn fill" href="#projetos">Ver projetos</a>
+    <a class="btn" href="https://github.com/GabrielAraujoGit" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</div></header>
+
+<section id="projetos"><div class="wrap">
+  <h2>Projetos</h2>
+  <p class="sub">Cada projeto tem uma simulação interativa: clique em "Testar" e use direto no navegador.</p>
+  <div class="grid" id="grid"></div>
+</div></section>
+
+<section id="stack"><div class="wrap">
+  <h2>Stack</h2>
+  <p class="sub">Linguagens e tecnologias com as quais trabalho.</p>
+  <div id="stk"></div>
+</div></section>
+
+<section id="contato"><div class="wrap">
+  <h2>Contato</h2>
+  <p class="sub">Vamos conversar sobre o próximo projeto?</p>
+  <div class="btns"><a class="btn" href="https://github.com/GabrielAraujoGit" target="_blank" rel="noopener">github.com/GabrielAraujoGit</a></div>
+</div></section>
+
+<footer>© 2026 Gabriel Araujo</footer>
+
+<!-- Modal ChatCopel -->
+<div class="modal" id="modal" onclick="if(event.target===this)closeChat()">
+  <div class="chat" id="chat">
+    <div class="top">
+      <div class="logo"><b>COPEL</b><em>Pura Energia</em></div>
+      <button class="th" onclick="chat.classList.toggle('dark')" title="Tema">◐</button>
+      <button class="x" onclick="closeChat()" title="Fechar">✕</button>
+    </div>
+    <div class="body empty" id="cbody">
+      <div class="welcome"><h4>Bem-vindo(a) ao Chat <strong>Copel</strong></h4></div>
+      <div class="msgs" id="msgs"></div>
+      <div class="comp">
+        <textarea id="inp" rows="1" placeholder="Pesquise documentos internos ou perguntas gerais..."></textarea>
+        <div class="row"><button id="snd" disabled onclick="send()">Enviar ➤</button></div>
+      </div>
+      <p class="hint">Simulação do front. Experimente: "Diária de alimentação para Curitiba"</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal das demais simulações -->
+<div class="modal" id="sm" onclick="if(event.target===this)closeSim()">
+  <div class="sw"><div class="sh"><span id="st"></span><button onclick="closeSim()" title="Fechar">✕</button></div><div class="sb" id="sb"></div></div>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const BRL=v=>v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+
+/* ---------- Projetos (cards) ---------- */
+const GH='https://github.com/GabrielAraujoGit/';
+/* ---------- Ícones das tecnologias (Devicon + Simple Icons) ---------- */
+const dv=k=>`https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/${k}/${k}-original.svg`;
+const si=(k,c)=>`https://cdn.simpleicons.org/${k}${c?'/'+c:''}`;
+const TI={AWS:dv('amazonwebservices'),HTML:dv('html5'),CSS:dv('css3'),JavaScript:dv('javascript'),Python:dv('python'),OpenCV:dv('opencv'),SQLite:dv('sqlite')};
+const TE={'IA / NLP':'🧠','Open Source':'🔓','Redes':'🌐','IPv6':'🌐','TOTP':'🔑','QR Code':'▦','AES':'🔐'};
+const ti=t=>TI[t]?`<img class="ti" src="${TI[t]}" alt="" loading="lazy" onerror="this.remove()">`:TE[t]?`<span class="te">${TE[t]}</span>`:'';
+const GHI=`<img class="li" src="${si('github','00ff1e')}" alt="" onerror="this.remove()">`;
+const P=[
+['chat','ChatCopel','Profissional','Chat corporativo da Copel para pesquisar documentos internos e tirar dúvidas gerais, com busca em texto, imagem e entrada por voz. Toda a infraestrutura roda na AWS.',['AWS','IA / NLP','HTML','CSS','JavaScript'],'',' copel'],
+['lynx','Lynx Assistant','Python','Assistente desktop open source: abre programas, sites e ambientes a partir de comandos simples, com interface moderna e ícone na bandeja.',['Python','CustomTkinter','PyStray','Open Source'],'Lynx-Assistant',''],
+['docs','Lynx Assistant Docs','HTML','Website de documentação e apresentação do Lynx Assistant.',['HTML','CSS','JavaScript'],'Lynx-Assistant-Docs',''],
+['gest','Gesture Mouse Controller','Python','Controla o cursor e os cliques com gestos da mão captados pela webcam, em tempo real.',['Python','OpenCV','MediaPipe','PyAutoGUI'],'gesture-mouse-controller',''],
+['ip','IPLookupStudio','Python','Ferramenta desktop para análise de IPs e hostnames: validação IPv4/IPv6, DNS, ASN, geolocalização e histórico.',['Python','Tkinter','Redes','IPv6'],'IPLookupStudio',''],
+['totp','DoubleCheckSec','Python','Autenticação em dois fatores (2FA) com TOTP, cadastro via QR Code e segredo criptografado com AES (Fernet).',['Python','TOTP','QR Code','AES'],'DoubleCheckSec',''],
+['eletro','EletroFlow','Python','Sistema interno de orçamentos: clientes, produtos, status e exportação em PDF e Excel. Em uso na Eletrofrio.',['Python','Tkinter','SQLite','ReportLab'],'eletroflow','']
+];
+$('grid').innerHTML=P.map(p=>`<div class="card${p[6]}"><h3>${p[1]} <span>${ti(p[2])}${p[2]}</span></h3><p>${p[3]}</p><div class="tags">${p[4].map(t=>`<i>${ti(t)}${t}</i>`).join('')}</div><div class="acts"><button class="btn sm" onclick="${p[0]=='chat'?'openChat()':`openSim('${p[0]}')`}">▶ Testar simulação</button>${p[5]?`<a href="${GH}${p[5]}" target="_blank" rel="noopener">${GHI}GitHub</a>`:''}</div></div>`).join('');
+
+/* ---------- Stack com ícones (Devicon) ---------- */
+const ST=[
+['Back end',[['Elixir','elixir'],['Phoenix / LiveView','phoenix'],['Python','python'],['Java','java'],['Spring Boot','spring'],['PHP','php'],['Laravel','laravel'],['OTP / BEAM','erlang']]],
+['Front end',[['Vue.js','vuejs'],['JavaScript','javascript'],['HTML5','html5'],['CSS3','css3']]],
+['Infra, dados e versionamento',[['Docker','docker'],['AWS','amazonwebservices'],['SQLite','sqlite'],['Git','git'],['GitHub','github'],['CNAB 240','🏦']]],
+['IA e visão computacional',[['OpenCV','opencv'],['NLP','🧠']]]];
+$('stk').innerHTML=ST.map(g=>`<div class="sg"><h4>${g[0]}</h4><div class="skills">${g[1].map(s=>/^[a-z]+$/.test(s[1])?`<div class="sk"><span class="ic"><img src="${dv(s[1])}" alt="${s[0]}" loading="lazy" onerror="var p=this.parentNode;this.remove();p.textContent='${s[0][0]}'"></span>${s[0]}</div>`:`<div class="sk"><span class="ic">${s[1]}</span>${s[0]}</div>`).join('')}</div></div>`).join('');
+
+/* ---------- ChatCopel ---------- */
+const chat=$('chat'),inp=$('inp'),snd=$('snd'),msgs=$('msgs'),cbody=$('cbody');
+function openChat(){$('modal').classList.add('open');inp.focus()}
+function closeChat(){$('modal').classList.remove('open')}
+inp.addEventListener('input',()=>{inp.style.height='auto';inp.style.height=Math.min(inp.scrollHeight,100)+'px';snd.disabled=!inp.value.trim()});
+inp.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send()}});
+const esc=t=>t.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function add(html,who){const d=document.createElement('div');d.className='m '+who;d.innerHTML=html;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;return d}
+function answer(q){
+  if(/di[aá]ria|alimenta/i.test(q))return 'Segundo a norma interna de viagens (simulada), a diária de alimentação para Curitiba segue a tabela vigente da sua faixa de cargo. Valor apenas ilustrativo.';
+  return 'Esta é uma resposta simulada do Chat Copel. Aqui entraria a resposta real da API.';
+}
+function send(){
+  const t=inp.value.trim();if(!t)return;
+  cbody.classList.remove('empty');add(esc(t),'u');
+  inp.value='';inp.style.height='auto';snd.disabled=true;
+  const ty=add('<span class="dots"><span></span><span></span><span></span></span>','b');
+  setTimeout(()=>{ty.remove();add(answer(t)+'<br><span class="src">📄 Fonte: documento interno (simulado)</span>','b')},1300);
+}
+
+/* ---------- Simulações ---------- */
+let run='',tt;
+const SIM={};
+function openSim(k){const s=SIM[k];$('st').textContent=s[0];$('sb').innerHTML=s[1];$('sm').classList.add('open');run=k;s[2]()}
+function closeSim(){$('sm').classList.remove('open');run='';clearInterval(tt)}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeChat();closeSim()}});
+
+/* Lynx Assistant */
+let LC={vscode:'VS Code',youtube:'YouTube',linkedin:'LinkedIn',github:'GitHub'};
+const LI={vscode:dv('vscode'),youtube:si('youtube','FF0000'),linkedin:dv('linkedin'),github:si('github','f0f3f6')};
+const lic=k=>LI[k]?`<img class="li" src="${LI[k]}" alt="" onerror="this.remove()">`:'';
+const lg=(t,c)=>{const d=document.createElement('div');d.innerHTML=t;d.className=c||'';$('lo').appendChild(d);$('lo').scrollTop=1e9};
+const lcm=()=>$('lcm').innerHTML=Object.keys(LC).map(k=>`<span class="chip">${lic(k)}abrir ${esc(k)}</span>`).join(' ');
+function lrun(v){
+  v=v.toLowerCase().trim();if(!v)return;lg(esc('> '+v));
+  const m=v.match(/^abrir (.+)$/);
+  if(v==='ln teste')lg('✔ Comando de teste executado','ok');
+  else if(m&&LC[m[1]])lg('✔ Abrindo '+lic(m[1])+esc(LC[m[1]])+'…','ok');
+  else lg('✖ Comando não encontrado. Adicione um novo abaixo.','er');
+}
+SIM.lynx=['Lynx Assistant',`<div class="lo" id="lo"><div class="ok">Lynx pronto. Digite um comando e aperte Enter.</div></div>
+<input id="li" placeholder="Ex.: abrir vscode"><div class="r2" id="lcm"></div>
+<div class="r2"><input id="ln" placeholder="Novo comando (ex.: spotify)" style="flex:1"><button class="btn sm" id="la">+ Adicionar</button></div>
+<p class="note">Simulação: no app real, o comando abre programas e sites no seu computador e salva tudo em commands.json.</p>`,()=>{
+  LC={vscode:'VS Code',youtube:'YouTube',linkedin:'LinkedIn',github:'GitHub'};lcm();
+  $('li').onkeydown=e=>{if(e.key==='Enter'){lrun(e.target.value);e.target.value=''}};
+  $('la').onclick=()=>{const n=$('ln').value.trim().toLowerCase();if(!n)return;LC[n]=n;$('ln').value='';lg('✔ Comando "abrir '+esc(n)+'" salvo','ok');lcm()};
+}];
+
+/* Lynx Docs */
+SIM.docs=['Lynx Assistant Docs',`<div class="web"><div>🔒 <img class="li" src="${LI.github}" alt="">gabrielaraujogit.github.io/Lynx-Assistant-Docs</div><div><h5><img class="li" src="${dv('python')}" alt="">Lynx Assistant</h5><span>O poder dos comandos rápidos na ponta dos seus dedos.</span><code class="pre" style="min-height:0" id="cp">pip install -r requirements.txt</code><button class="btn sm" id="cb">Copiar comando</button><span class="r2"><span class="chip">Instalação</span><span class="chip">Uso</span><span class="chip">Arquitetura</span><span class="chip">Roadmap</span></span></div></div><p class="note">Prévia ilustrativa do site de documentação.</p>`,()=>{
+  $('cb').onclick=()=>{navigator.clipboard&&navigator.clipboard.writeText($('cp').textContent);$('cb').textContent='✔ Copiado'}}];
+
+/* Gesture Mouse Controller */
+SIM.gest=['Gesture Mouse Controller',`<canvas id="gc" width="600" height="260"></canvas><div class="r2"><span>Cliques no alvo: <b id="gn" class="ok">0</b></span></div><p class="note">Esquerda: câmera simulada. Mova o mouse (ou o dedo) para mexer a "mão"; clique ou toque para fazer o gesto de pinça. Direita: a tela, com o cursor suavizado.</p>`,()=>{
+  const c=$('gc'),x=c.getContext('2d');let mx=145,my=130,cx=450,cy=130,dn=0,n=0,f=0;
+  const IM=['python','opencv'].map(k=>{const i=new Image();i.src=dv(k);return i});
+  const B=[[330,50,80,60],[430,50,80,60],[380,150,80,60]],hit=[0,0,0],pt=e=>{const r=c.getBoundingClientRect();return[(e.clientX-r.left)*600/r.width,(e.clientY-r.top)*260/r.height]};
+  c.onpointermove=e=>{const p=pt(e);mx=Math.min(Math.max(p[0],30),270);my=Math.min(Math.max(p[1],60),210)};
+  c.onpointerdown=()=>{dn=1;B.forEach((b,i)=>{if(cx>b[0]&&cx<b[0]+b[2]&&cy>b[1]&&cy<b[1]+b[3]){hit[i]=8;$('gn').textContent=++n}})};
+  c.onpointerup=()=>dn=0;
+  (function L(){if(run!='gest')return;x.clearRect(0,0,600,260);x.fillStyle='#0f151d';x.fillRect(0,0,290,260);
+    x.fillStyle='#6b7684';x.font='11px Poppins';x.fillText('webcam (MediaPipe)',10,18);x.fillText('tela',320,18);
+    IM.forEach((i,k)=>{if(i.complete&&i.naturalWidth)x.drawImage(i,10+k*22,26,18,18)});
+    const A=[-2.5,-1.95,-1.6,-1.25,-.8],T=A.map((a,i)=>[mx+Math.cos(a)*(i?48:34),my+Math.sin(a)*(i?48:34)]);
+    if(dn)T[0]=[T[1][0]-2,T[1][1]+6];
+    x.strokeStyle='#00ff1e';x.fillStyle='#00ff1e';x.lineWidth=2;
+    T.forEach(t=>{x.beginPath();x.moveTo(mx,my);x.lineTo(t[0],t[1]);x.stroke();x.beginPath();x.arc(t[0],t[1],4,0,7);x.fill()});
+    x.beginPath();x.arc(mx,my,9,0,7);x.fill();
+    cx+=(mx+310-cx)*.18;cy+=(my-cy)*.18;
+    B.forEach((b,i)=>{x.fillStyle=hit[i]>0?'#00ff1e':'#222b36';hit[i]--;x.fillRect(b[0],b[1],b[2],b[3])});
+    x.fillStyle='#fff';x.beginPath();x.arc(cx,cy,dn?5:8,0,7);x.fill();
+    requestAnimationFrame(L)})();
+}];
+
+/* IPLookupStudio */
+const v4=s=>/^(\d{1,3}\.){3}\d{1,3}$/.test(s)&&s.split('.').every(o=>+o<256);
+const v6=s=>s.includes(':')&&/^[0-9a-f:]+$/i.test(s)&&s.split(':').length>2&&s.split(':').length<9;
+const GEO={'8.8.8.8':['Estados Unidos','Virgínia','Ashburn','Google LLC','AS15169 Google LLC'],'1.1.1.1':['Austrália','Queensland','South Brisbane','Cloudflare, Inc.','AS13335 Cloudflare, Inc.']};
+let HIS=[];
+function ipq(s){
+  s=s.trim();if(!s)return;let o='Consulta: '+s+'\n';
+  if(v4(s)){const a=s.split('.').map(Number),pv=a[0]==10||(a[0]==172&&a[1]>=16&&a[1]<32)||(a[0]==192&&a[1]==168),rs=a[0]==127||a[0]==0||(a[0]==169&&a[1]==254)||a[0]>=224;
+    o+='Válido: IPv4\nTipo: '+(pv?'privado':rs?'reservado':'global')+'\nClasse: '+(a[0]<128?'A':a[0]<192?'B':a[0]<224?'C':'D/E');
+    if(!pv&&!rs){const g=GEO[s];o+=g?`\nPaís: ${g[0]}\nRegião: ${g[1]}\nCidade: ${g[2]}\nISP: ${g[3]}\nASN: ${g[4]}\n(dados de exemplo; o app consulta o ip-api)`:'\nGeolocalização: o app consulta o ip-api (não simulado para este IP)'}}
+  else if(v6(s))o+='Válido: IPv6\nTipo: '+(s=='::1'?'loopback':'verificado pelo módulo ipaddress no app');
+  else if(/^[a-z0-9-]+(\.[a-z0-9-]+)+$/i.test(s))o+='Hostname detectado.\nO app resolve A/AAAA com socket.getaddrinfo (só no desktop).';
+  else o+='✖ Entrada inválida: informe um IP ou hostname.';
+  $('ipo').textContent=o;HIS.unshift(s);HIS=HIS.slice(0,200);$('iph').textContent='Histórico: '+HIS.slice(0,5).join(' · ')}
+SIM.ip=['IPLookupStudio',`<div class="r2"><input id="ipi" placeholder="Ex.: 8.8.8.8, 192.168.0.1 ou ::1" style="flex:1"><button class="btn sm" id="ipb">Consultar</button></div><div class="pre" id="ipo">Digite um IP e clique em Consultar.</div><div class="r2"><span class="note" id="iph" style="flex:1">Histórico vazio</span><button class="btn sm" id="ipe">Exportar .txt</button></div><p class="note">Validação e classificação rodam de verdade aqui; a geolocalização é de exemplo.</p>`,()=>{
+  HIS=[];$('ipb').onclick=()=>ipq($('ipi').value);$('ipi').onkeydown=e=>{if(e.key==='Enter')ipq(e.target.value)};
+  $('ipe').onclick=()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([$('ipo').textContent]));a.download='iplookup.txt';a.click()}}];
+
+/* DoubleCheckSec: TOTP real (RFC 6238) */
+const B32='ABCDEFGHIJKLMNOPQRSTUVWXYZ234567',SEC='JBSWY3DPEHPK3PXP';
+const b32=s=>{let b='',o=[];for(const c of s)b+=B32.indexOf(c).toString(2).padStart(5,'0');for(let i=0;i+8<=b.length;i+=8)o.push(parseInt(b.slice(i,i+8),2));return new Uint8Array(o)};
+async function totp(t){const k=await crypto.subtle.importKey('raw',b32(SEC),{name:'HMAC',hash:'SHA-1'},false,['sign']),c=new DataView(new ArrayBuffer(8));c.setUint32(4,Math.floor(t/30000));
+  const h=new Uint8Array(await crypto.subtle.sign('HMAC',k,c.buffer)),o=h[19]&15;return String(((h[o]&127)<<24|h[o+1]<<16|h[o+2]<<8|h[o+3])%1e6).padStart(6,'0')}
+SIM.totp=['DoubleCheckSec',`<div class="note">Passo 1, setup_2fa.py: segredo TOTP gerado e guardado criptografado (Fernet/AES).</div><div class="pre" style="min-height:0">secret: ${SEC}<br>secret.enc: gAAAAAB… (exemplo)</div><div class="note">Passo 2, verify_2fa.py: o código muda a cada 30 s.</div><div class="code" id="tc">------</div><div class="bar"><i id="tb"></i></div><div class="r2"><input id="ti" inputmode="numeric" maxlength="6" placeholder="Digite o código de 6 dígitos" style="flex:1"><button class="btn sm" id="tv">Verificar</button></div><div id="tr"></div><p class="note">O código é calculado de verdade (HMAC-SHA1). Cadastre o segredo acima no Google Authenticator e compare.</p>`,()=>{
+  const tick=async()=>{try{const n=Date.now();$('tc').textContent=await totp(n);$('tb').style.width=(30-(n/1000)%30)/30*100+'%'}catch(e){$('tc').textContent='indisponível';clearInterval(tt)}};
+  tick();tt=setInterval(tick,500);
+  $('tv').onclick=async()=>{const v=$('ti').value.trim(),ok=v==await totp(Date.now())||v==await totp(Date.now()-30000);$('tr').className=ok?'ok':'er';$('tr').textContent=ok?'✔ Autenticado':'✖ Código inválido ou expirado'}}];
+
+/* EletroFlow */
+const PR=[['Compressor 1/2 HP',850],['Condensadora 12k BTU',1200],['Termostato digital',140],['Kit tubulação 5m',320]],STS=['Aberto','Aprovado','Cancelado','Rejeitado'];
+let Q={},SS='Aberto',EN='';
+function eR(){const it=Object.keys(Q).filter(i=>Q[i]>0),tot=it.reduce((s,i)=>s+Q[i]*PR[i][1],0);
+  $('eq').innerHTML=(it.length?`<table>${it.map(i=>`<tr><td>${PR[i][0]}</td><td>${Q[i]}×</td><td>${BRL(Q[i]*PR[i][1])}</td><td><button onclick="Q[${i}]--;eR()">−</button></td></tr>`).join('')}</table>`:'<p class="note">Adicione produtos ao orçamento.</p>')+`<b style="color:var(--strong)">Total: ${BRL(tot)}</b><div class="r2">${STS.map(s=>`<button class="st${s==SS?' on':''}" onclick="SS='${s}';eR()">${s}</button>`).join('')}</div><div class="r2"><button class="btn sm" onclick="EN='✔ PDF gerado (simulado)';eR()">Exportar PDF</button><button class="btn sm" onclick="EN='✔ Excel gerado (simulado)';eR()">Exportar Excel</button><span class="ok">${EN}</span></div>`}
+SIM.eletro=['EletroFlow',`<select><option>Cliente: Mercado Exemplo Ltda</option><option>Cliente: Padaria Exemplo</option></select><div class="r2">${PR.map((p,i)=>`<button class="btn sm" onclick="Q[${i}]=(Q[${i}]||0)+1;eR()">+ ${p[0]}</button>`).join('')}</div><div id="eq"></div><p class="note">Dados fictícios. No app real: SQLite, cadastro completo e exportação oficial em PDF e Excel.</p>`,()=>{Q={};SS='Aberto';EN='';eR()}];
+</script>
+</body>
+</html>
